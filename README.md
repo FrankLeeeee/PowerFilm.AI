@@ -1,4 +1,7 @@
-# iNtution 
+# PowerFilm.AI  
+
+download model weights at https://drive.google.com/open?id=1Qu-NSrc6j2Bs9Lt38xIZGEs6_EzlaVxi  
+
 ## Inspiration
 **4K era** is coming with an expected astounding capital annual growth rate of **25%** for the next 5 years and the entertaining industry is experiencing a lucrative revenue of more than **3 trillion dollars**. Our product, **Powerfilm.ai** is a premier product that goes in sync with the current technology development. There is just a huge potential with our Powerfilm.ai as both an entertainment and a professional editing software.
 ## Overview
