@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PowerFilm.AI</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="static/js/alertify.js"></script>
+    <script src="static/js/index.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/alertify.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-blue">
+        <a class="navbar-brand" href="/"><img class="w-40px" src="static/images/logo.png" alt="ntu logo">
+            <span class="navbar-text text-white ml-3 h4">
+            PowerFilm.AI
+        </span>
+        </a>
+    </nav>
+
+    <div class="container center-from-navbar">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card" style="width: 20rem;">
+                    <img src="static/images/image.png" class="card-img-top w-75 pic-center" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Image Super-Resolution</h5>
+                        <p class="card-text text-justify">Increase resolution by 2 times and make every detail finer than ever.</p>
+                        <form id="image-form" method="post" enctype="multipart/form-data">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" accept=".jpg" id="image_input" name="image">
+                                <label class="custom-file-label" for="image_input">.jpg</label>
+                            </div>
+                            <div class="mt-3">
+                                <button type="button" onClick="uploadImage()" class="btn btn-primary"><span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" id="image_spinner"></span>Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 20rem;">
+                    <img src="static/images/video.png" class="card-img-top w-75 pic-center" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Video Super-Resolution</h5>
+                        <p class="card-text text-justify">Enhance your video with higher resolution and embrace the 4K era.</p>
+                        <form id="video-form" method="post" enctype="multipart/form-data">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" accept=".mp4" id="video_input" name="video">
+                                <label class="custom-file-label" for="video_input">.mp4</label>
+                            </div>
+                            <div class="mt-3">
+                                <button type="button" onClick="uploadVideo()" class="btn btn-primary"><span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" id="video_spinner"></span>Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 20rem;">
+                    <img src="static/images/audio.png" class="card-img-top w-75 pic-center" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Audio Style Transfer</h5>
+                        <p class="card-text text-justify">Speak in another voice and bring more possibility to your production.</p>
+                        <form id="audio-form" method="post" enctype="multipart/form-data">
+                            <div class="custom-file" method="post" enctype="multipart/form-data">
+                                <input type="file" class="custom-file-input" accept=".wav" id="source_audio_input" name="source_audio">
+                                <label class="custom-file-label" for="source_audio_input">Source .wav</label>
+                            </div>
+                            <div class="custom-file mt-2" method="post" enctype="multipart/form-data">
+                                <input type="file" class="custom-file-input" accept=".wav" id="target_audio_input" name="target_audio">
+                                <label class="custom-file-label" for="target_audio_input">Target .wav</label>
+                            </div>
+                            <div class="mt-3">
+                                <button type="button" onClick="uploadAudio()" class="btn btn-primary"><span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true" id="audio_spinner"></span>Upload</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
